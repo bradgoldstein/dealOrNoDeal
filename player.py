@@ -16,6 +16,7 @@ class Player(object):
         self.non_private = [] # everyone except this player can see
         self.public = [] # everyone can see
         self.secret = [] # no one can see
+        self.vars = [] # list of vars assigned to the player
         self.dealer = False
         self.points = 0
 
@@ -67,6 +68,11 @@ class Player(object):
         print self.name, "has"
         for c in self.private:
             print c
+            
+    def getVars(self, check):
+        for i in self.vars:
+            if i.name == check: return i
+        return None
 
 # p = Player("brad")
 c = Card("clubs", 4)
