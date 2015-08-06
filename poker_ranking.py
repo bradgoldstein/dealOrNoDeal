@@ -144,6 +144,9 @@ def handy(cards):
         assert card.rank > 0 and card.rank < 13, "Invalid: Don't understand card rank %d" % card.rank
         hand.append(card)
     assert len(hand) == 5, "Invalid: Must be 5 cards in a hand, not %i" % len(hand)
+    for c in hand:
+        print c
+        print c.__hash__()
     assert len(set(hand)) == 5, "Invalid: All cards in the hand must be unique %r" % cards
     return hand
 

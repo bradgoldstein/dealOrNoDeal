@@ -2,6 +2,7 @@ __author__ = 'bradleygoldstein'
 
 import random
 from card import card
+from poker_ranking import rank
 
 
 class player(object):
@@ -55,12 +56,15 @@ class player(object):
 
 #
 #
-# p = player("brad")
-# c = card("hearts", 4)
-# d = card("spades", 5)
-# e = card("diamonds", 6)
+p = player("brad")
+c = card("hearts", 4)
+d = card("spades", 5)
+e = card("diamonds", 6)
+f = card("hearts", 7)
+g = card("hearts", 8)
+h = card("hearts", 9)
 #
-# p.private = [c,d, e]
+p.private = [c,d, e, f,g, h]
 # # p.print_p()
 # # f = p.peek_at_top(p.private)
 # # print f.rank, f.suit
@@ -71,6 +75,7 @@ class player(object):
 # # p.collect_cards(p.private, [c,d])
 # # p.print_p()
 #
-# p.print_p()
+p.print_p()
+print rank(p.private)
 # p.give_random_card(p.private)
 # p.print_p()
