@@ -17,6 +17,7 @@ class Player(object):
         self.public = [] # everyone can see
         self.secret = [] # no one can see
         self.dealer = False
+        self.points = 0
 
     def set_dealer(self):
         self.dealer = True
