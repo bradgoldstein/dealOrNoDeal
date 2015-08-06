@@ -63,8 +63,9 @@ def straight(hand):
             all_ranks.append(card.rank)
     all_ranks.sort()
 
-    if all_ranks[4] - all_ranks[0] != 4:
-        return False, None
+    for i in range(1,5):
+        if all_ranks[i] - all_ranks[0] != i:
+            return False, None
     highest_card = all_ranks[0]
     if highest_card == 14:
         return 'straight', 1
@@ -105,18 +106,25 @@ def onepair(hand):
     all_ranks_s = set()
     for card in hand:
         all_ranks.append(card.rank)
-        all_ranks_s.add(card.suit)
+        all_ranks_s.add(card.rank)
 
-    pairs = [f for f in all_ranks_s if all_ranks.count(f) == 2]
+    pairs = set()
+    for f in all_ranks:
+        if all_ranks.count(f) == 2:
+            pairs.add(f)
     if len(pairs) != 1:
         return False, None
     else:
-        return 'one-pair', pairs[0]
+        others = all_ranks_s - pairs
+        if 1 in others:
+            return 'one-pair', [pairs.pop(), 1]
+        highest_other = max(others)
+        return 'one-pair', [pairs.pop(), highest_other]
 
 def highcard(hand):
     all_ranks = []
     for card in hand:
-        if card == 1:
+        if card.rank == 1:
             return 'high-card', 1
         all_ranks.append(card.rank)
     all_ranks.sort()
@@ -133,7 +141,7 @@ def rank(cards):
         if rank[0] is not False:
             break
     assert rank, "Invalid: Failed to rank cards: %r" % cards
-    return rank[0]
+    return rank
 
 def handy(cards):
     hand = []

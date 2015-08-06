@@ -32,3 +32,20 @@ p.print_p()
 print rank(p.private)
 # p.give_random_card(p.private)
 # p.print_p()
+
+
+
+# p = Player("brad")
+c = Card("hearts", 4)
+d = Card("hearts", 5)
+e = Card("hearts", 9)
+f = Card("hearts", 7)
+g = Card("hearts", 8)
+c_s = [c,d,e,f,g]
+
+# p.private = [c,d, e, f,g]
+# for c in p.private:
+#     print c
+#
+# p.print_p()
+print rank(c_s)
