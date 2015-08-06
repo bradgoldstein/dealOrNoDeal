@@ -4,6 +4,11 @@ Created on Aug 6, 2015
 @author: S Vin
 '''
 
+from pile import Pile
+from player import Player
+from var import Var
+from card import Card
+
 class Board(object):
     '''
     Board on which the game is played
