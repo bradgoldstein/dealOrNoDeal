@@ -3,7 +3,6 @@ __author__ = 'bradleygoldstein'
 import random
 from card import card
 
-
 class player(object):
     "represents a player in the game"
     number = 0
@@ -48,26 +47,7 @@ class player(object):
         return card
 
     def print_p(self):
+        print
         print self.name, "has"
         for c in self.private:
             print c.rank, c.suit
-
-
-
-p = player("brad")
-c = card("hearts", 4)
-d = card("spades", 5)
-e = card("diamonds", 6)
-
-p.private = [c,d, e]
-# p.print_p()
-# f = p.peek_at_top(p.private)
-# print f.rank, f.suit
-# p.print_p()
-# f = p.get_top(p.private)
-# print f.rank, f.suit
-# p.print_p()
-# p.collect_cards(p.private, [c,d])
-# p.print_p()
-
-
