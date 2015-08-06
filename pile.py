@@ -12,9 +12,10 @@ class Pile(object):
     '''
 
     number = 0
-    
+
     def __init__(self, name):
         self.name = name
         self.id = Pile.number
         Pile.number += 1
         self.cards = []
+
