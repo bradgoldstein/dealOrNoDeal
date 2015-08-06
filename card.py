@@ -1,6 +1,6 @@
 __author__ = 'bradleygoldstein'
 
-class card(object):
+class Card(object):
     "a playing card"
     def __init__(self, suit=None, rank=None, special=None):
         if suit is not None:

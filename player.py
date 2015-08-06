@@ -1,16 +1,16 @@
 __author__ = 'bradleygoldstein'
 
 import random
-from card import card
+from card import Card
 from poker_ranking import rank
 
 
-class player(object):
+class Player(object):
     "represents a player in the game"
     number = 0
     def __init__(self, name):
-        self.id = player.number
-        player.number += 1
+        self.id = Player.number
+        Player.number += 1
         self.name = name
         self.private = [] # only this player can see the cards
         self.non_private = [] # everyone except this player can see
@@ -57,12 +57,12 @@ class player(object):
 
 #
 #
-p = player("brad")
-c = card("hearts", 4)
-d = card("spades", 5)
-e = card("diamonds", 6)
-f = card("hearts", 7)
-g = card("hearts", 8)
+p = Player("brad")
+c = Card("hearts", 4)
+d = Card("spades", 5)
+e = Card("diamonds", 6)
+f = Card("hearts", 7)
+g = Card("hearts", 8)
 #
 p.private = [c,d, e, f,g]
 for c in p.private:
