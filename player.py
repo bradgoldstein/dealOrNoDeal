@@ -67,3 +67,18 @@ class Player(object):
         print self.name, "has"
         for c in self.private:
             print c
+
+# p = Player("brad")
+c = Card("diamonds", 4)
+d = Card("hearts", 8)
+e = Card("hearts", 7)
+f = Card("diamonds", 7)
+g = Card("diamonds", 8)
+c_s = [c,d,e,f,g]
+
+# p.private = [c,d, e, f,g]
+# for c in p.private:
+#     print c
+#
+# p.print_p()
+print rank(c_s)

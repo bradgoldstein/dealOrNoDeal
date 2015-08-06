@@ -92,14 +92,20 @@ def twopair(hand):
     all_ranks_s = set()
     for card in hand:
         all_ranks.append(card.rank)
-        all_ranks_s.add(card.suit)
+        all_ranks_s.add(card.rank)
 
-    pairs = [f for f in all_ranks_s if all_ranks.count(f) == 2]
+    pairs = set()
+    for f in all_ranks:
+        if all_ranks.count(f) == 2:
+            pairs.add(f)
+
     if len(pairs) != 2:
         return False, None
     p0, p1 = pairs
-    other = [(all_ranks_s - set(pairs)).pop()]
-    return 'two-pair', [p0, p1, other]
+    p_max = max(p0, p1)
+    p_min = min(p0, p1)
+    other = (all_ranks_s - set(pairs)).pop()
+    return 'two-pair', [p_max, p_min, other]
 
 def onepair(hand):
     all_ranks = []
