@@ -10,7 +10,11 @@ class card(object):
         self.special = special
         self.rank = rank
         self.suit = suit
+
     def __eq__(self, other):
         if self.suit == other.suit and self.rank == other.rank:
             return True
         return False
+
+    def __hash__(self):
+        return hash((self.rank, self.suit))
