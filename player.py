@@ -29,7 +29,6 @@ class Player(object):
         assert len(pile) > 0
         return pile[0]
 
-    # all plain "cards" are private
     def get_top(self, pile):
         assert len(pile) > 0
         top = pile[-1]
