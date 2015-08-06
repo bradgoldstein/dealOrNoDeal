@@ -2,4 +2,6 @@ __author__ = 'bradleygoldstein'
 
 
 class Game(object):
-    pass
+    "an entire game is stored and played here"
+
+

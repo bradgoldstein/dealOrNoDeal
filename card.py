@@ -6,7 +6,7 @@ class Card(object):
         if suit is not None:
             assert suit in ['diamonds', 'hearts', 'clubs', 'spades']
         if rank is not None:
-            assert rank > 0 and rank < 13
+            assert rank > 0 and rank < 14
         self.special = special
         self.rank = rank
         self.suit = suit
