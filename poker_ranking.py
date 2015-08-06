@@ -49,7 +49,7 @@ def fullhouse(hand):
 
     all_types = set(all_ranks)
     if len(all_types) != 2:
-        return False
+        return False, None
     for f in all_types:
         if all_ranks.count(f) == 3:
             return 'full-house', rank
@@ -64,11 +64,11 @@ def flush(hand):
             pass
         elif card.rank == 1:
             highest_rank = 1
-        elif card.rank > highest_drank:
+        elif card.rank > highest_rank:
             highest_rank = card.rank
 
     if len(all_suits) != 1:
-        return False
+        return False, None
     return 'flush', highest_rank
 
 def straight(hand):
@@ -81,58 +81,64 @@ def straight(hand):
             all_ranks.append(card.rank)
     all_ranks.sort()
 
-    if all_ranks[0] - all_ranks
-
-
-
-
-    ordered = sorted(hand, key=lambda card: (f.index(card.face), card.suit))
-    first, rest = ordered[0], ordered[1:]
-    if ' '.join(card.face for card in ordered) in fs:
-        return 'straight', ordered[-1].face
-    return False
+    if all_ranks[0] - all_ranks[4] != 5:
+        return False, None
+    highest_card = all_ranks[0]
+    if highest_card == 14:
+        return 'straight', 1
+    else:
+        return 'straight', highest_card
 
 def threeofakind(hand):
-    allfaces = [f for f,s in hand]
-    allftypes = set(allfaces)
-    if len(allftypes) <= 2:
-        return False
-    for f in allftypes:
-        if allfaces.count(f) == 3:
-            allftypes.remove(f)
-            return ('three-of-a-kind', [f] +
-                     sorted(allftypes,
-                            key=lambda f: face.index(f),
-                            reverse=True))
+    all_ranks = []
+    all_ranks_s = set()
+    for card in hand:
+        all_ranks.append(card.rank)
+        all_ranks_s.add(card.suit)
+
+    if len(all_ranks_s) <= 2:
+        return False, None
+    for f in all_ranks_s:
+        if all_ranks.count(f) == 3:
+            return 'three-of-a-kind', f
     else:
-        return False
+        return False, None
 
 def twopair(hand):
-    allfaces = [f for f,s in hand]
-    allftypes = set(allfaces)
-    pairs = [f for f in allftypes if allfaces.count(f) == 2]
+    all_ranks = []
+    all_ranks_s = set()
+    for card in hand:
+        all_ranks.append(card.rank)
+        all_ranks_s.add(card.suit)
+
+    pairs = [f for f in all_ranks_s if all_ranks.count(f) == 2]
     if len(pairs) != 2:
-        return False
+        return False, None
     p0, p1 = pairs
-    other = [(allftypes - set(pairs)).pop()]
-    return 'two-pair', pairs + other if face.index(p0) > face.index(p1) else pairs[::-1] + other
+    other = [(all_ranks_s - set(pairs)).pop()]
+    return 'two-pair', [p0, p1, other]
 
 def onepair(hand):
-    allfaces = [f for f,s in hand]
-    allftypes = set(allfaces)
-    pairs = [f for f in allftypes if allfaces.count(f) == 2]
+    all_ranks = []
+    all_ranks_s = set()
+    for card in hand:
+        all_ranks.append(card.rank)
+        all_ranks_s.add(card.suit)
+
+    pairs = [f for f in all_ranks_s if all_ranks.count(f) == 2]
     if len(pairs) != 1:
-        return False
-    allftypes.remove(pairs[0])
-    return 'one-pair', pairs + sorted(allftypes,
-                                      key=lambda f: face.index(f),
-                                      reverse=True)
+        return False, None
+    else:
+        return 'one-pair', pairs[0]
 
 def highcard(hand):
-    allfaces = [f for f,s in hand]
-    return 'high-card', sorted(allfaces,
-                               key=lambda f: face.index(f),
-                               reverse=True)
+    all_ranks = []
+    for card in hand:
+        if card == 1:
+            return 'high-card', 1
+        all_ranks.append(card.rank)
+    all_ranks.sort()
+    return 'high-card', all_ranks[0]
 
 handrankorder =  (straightflush, fourofakind, fullhouse,
                   flush, straight, threeofakind,
@@ -142,17 +148,16 @@ def rank(cards):
     hand = handy(cards)
     for ranker in handrankorder:
         rank = ranker(hand)
-        if rank:
+        if rank[0] is not False:
             break
     assert rank, "Invalid: Failed to rank cards: %r" % cards
-    return rank
+    return rank[0]
 
-def handy(cards=[]):
+def handy(cards):
     hand = []
-    for card in cards.split():
-        f, s = card[:-1], card[-1]
-        assert f in face, "Invalid: Don't understand card face %r" % f
-        assert s in suit, "Invalid: Don't understand card suit %r" % s
+    for card in cards:
+        assert card.suit in ['diamonds', 'hearts', 'clubs', 'spades'], "Invalid: Don't understand card rank %r" % card.rank
+        assert rank > 0 and rank < 13, "Invalid: Don't understand card suit %d" % card.suit
         hand.append(Card(f, s))
     assert len(hand) == 5, "Invalid: Must be 5 cards in a hand, not %i" % len(hand)
     assert len(set(hand)) == 5, "Invalid: All cards in the hand must be unique %r" % cards
