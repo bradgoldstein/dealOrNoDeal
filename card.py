@@ -14,4 +14,3 @@ class card(object):
         if self.suit == other.suit and self.rank == other.rank:
             return True
         return False
-
