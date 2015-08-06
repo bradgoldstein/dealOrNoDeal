@@ -1,5 +1,8 @@
 __author__ = 'bradleygoldstein'
 
+#read in file, parse,
+
+#play
 
 class Game(object):
     "an entire game is stored and played here"
