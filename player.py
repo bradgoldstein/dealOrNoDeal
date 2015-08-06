@@ -75,7 +75,6 @@ e = Card("clubs", 6)
 f = Card("clubs", 7)
 g = Card("clubs", 8)
 c_s = [c,d,e,f,g]
-
 # p.private = [c,d, e, f,g]
 # for c in p.private:
 #     print c
