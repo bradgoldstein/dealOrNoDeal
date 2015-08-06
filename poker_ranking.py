@@ -2,8 +2,6 @@ __author__ = 'bradleygoldstein'
 
 # adapted from http://rosettacode.org/wiki/Poker_hand_analyser#Python
 
-from card import Card
-
 def straightflush(hand):
     is_straight, rank = straight(hand)
     if is_straight is 'straight' and flush(hand)[0] is 'flush':

@@ -17,7 +17,7 @@ class Card(object):
         return False
 
     def __str__(self):
-        return str(self.rank) + " " + self.suit
+        return str(self.rank) + " of " + self.suit
 
     def __hash__(self):
         return hash(self.rank) ^ ~hash(self.suit)

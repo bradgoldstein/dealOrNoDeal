@@ -25,6 +25,10 @@ class Player(object):
         assert len(pile) > 0
         return pile[-1]
 
+    def peek_at_bottom(self, pile):
+        assert len(pile) > 0
+        return pile[0]
+
     # all plain "cards" are private
     def get_top(self, pile):
         assert len(pile) > 0
@@ -32,7 +36,18 @@ class Player(object):
         pile.pop()
         return top
 
-    def collect_cards(self, pile, cards):
+    def get_bottom(self, pile):
+        assert len(pile) > 0
+        bottom = pile[0]
+        pile.pop(0)
+        return bottom
+
+    def get_random_card(self, pile):
+        card = random.choice(pile)
+        pile.remove(card)
+        return card
+
+    def add_to_bottom(self, pile, cards):
         if not isinstance(cards, list):
             cards = [cards]
         for c in cards:
@@ -44,16 +59,14 @@ class Player(object):
         for c in cards:
             pile.append(c)
 
-    def give_random_card(self, pile):
-        card = random.choice(pile)
-        pile.remove(card)
-        return card
+    def add_random_card(self, pile, card):
+        pile.insert(random.randint(0, len(pile)), card)
 
     def print_p(self):
         print
         print self.name, "has"
         for c in self.private:
-            print c.rank, c.suit
+            print c
 
 #
 #
@@ -63,8 +76,13 @@ d = Card("spades", 5)
 e = Card("diamonds", 6)
 f = Card("hearts", 7)
 g = Card("hearts", 8)
-#
-p.private = [c,d, e, f,g]
+c_s = [c,d,e,f,g]
+for c in c_s:
+    p.add_random_card(p.private, c)
+    print
+    print p.peek_at_top(p.private)
+    print p.peek_at_bottom(p.private)
+# p.private = [c,d, e, f,g]
 for c in p.private:
     print c
 # # p.print_p()
