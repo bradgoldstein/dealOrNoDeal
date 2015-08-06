@@ -9,6 +9,7 @@ class player(object):
     "represents a player in the game"
     number = 0
     def __init__(self, name):
+        self.id = player.number
         player.number += 1
         self.name = name
         self.private = [] # only this player can see the cards
@@ -62,9 +63,10 @@ d = card("spades", 5)
 e = card("diamonds", 6)
 f = card("hearts", 7)
 g = card("hearts", 8)
-h = card("hearts", 9)
 #
-p.private = [c,d, e, f,g, h]
+p.private = [c,d, e, f,g]
+for c in p.private:
+    print c
 # # p.print_p()
 # # f = p.peek_at_top(p.private)
 # # print f.rank, f.suit

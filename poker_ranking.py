@@ -144,17 +144,5 @@ def handy(cards):
         assert card.rank > 0 and card.rank < 13, "Invalid: Don't understand card rank %d" % card.rank
         hand.append(card)
     assert len(hand) == 5, "Invalid: Must be 5 cards in a hand, not %i" % len(hand)
-    for c in hand:
-        print c
-        print c.__hash__()
     assert len(set(hand)) == 5, "Invalid: All cards in the hand must be unique %r" % cards
     return hand
-
-
-def test(hand1):
-    print rank(hand1)
-
-
-hand_a = [card("hearts", 11), card("diamonds", 11), card("hearts", 10), card("hearts", 10), card("hearts", 11)]
-hand_b = [card("hearts", 12)]
-test(hand_a)
