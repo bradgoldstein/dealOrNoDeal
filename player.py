@@ -69,11 +69,11 @@ class Player(object):
             print c
 
 # p = Player("brad")
-c = Card("diamonds", 4)
-d = Card("hearts", 8)
-e = Card("hearts", 7)
-f = Card("diamonds", 7)
-g = Card("diamonds", 8)
+c = Card("clubs", 4)
+d = Card("clubs", 5)
+e = Card("clubs", 6)
+f = Card("clubs", 7)
+g = Card("clubs", 8)
 c_s = [c,d,e,f,g]
 
 # p.private = [c,d, e, f,g]

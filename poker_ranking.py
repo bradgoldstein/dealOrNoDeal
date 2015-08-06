@@ -11,12 +11,12 @@ def straightflush(hand):
 
 def fourofakind(hand):
     all_ranks = []
-    all_suits = set()
+    all_ranks_s = set()
     for card in hand:
         all_ranks.append(card.rank)
-        all_suits.add(card.suit)
+        all_ranks_s.add(card.rank)
 
-    if len(all_suits) != 2:
+    if len(all_ranks_s) != 2:
         return False, None
     for rank in all_ranks:
         if all_ranks.count(rank) == 4:
@@ -34,7 +34,7 @@ def fullhouse(hand):
         return False, None
     for f in all_types:
         if all_ranks.count(f) == 3:
-            return 'full-house', rank
+            return 'full-house', f
     assert 1 == 0
 
 def flush(hand):
@@ -66,7 +66,7 @@ def straight(hand):
     for i in range(1,5):
         if all_ranks[i] - all_ranks[0] != i:
             return False, None
-    highest_card = all_ranks[0]
+    highest_card = all_ranks[4]
     if highest_card == 14:
         return 'straight', 1
     else:
@@ -153,7 +153,7 @@ def handy(cards):
     hand = []
     for card in cards:
         assert card.suit in ['diamonds', 'hearts', 'clubs', 'spades'], "Invalid: Don't understand card suit %d" % card.suit
-        assert card.rank > 0 and card.rank < 13, "Invalid: Don't understand card rank %d" % card.rank
+        assert card.rank > 0 and card.rank < 14, "Invalid: Don't understand card rank %d" % card.rank
         hand.append(card)
     assert len(hand) == 5, "Invalid: Must be 5 cards in a hand, not %i" % len(hand)
     assert len(set(hand)) == 5, "Invalid: All cards in the hand must be unique %r" % cards
