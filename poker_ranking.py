@@ -2,23 +2,7 @@ __author__ = 'bradleygoldstein'
 
 # adapted from http://rosettacode.org/wiki/Poker_hand_analyser#Python
 
-from collections import namedtuple
-import card
-
-class Card(namedtuple('Card', 'face, suit')):
-    def __repr__(self):
-        return ''.join(self)
-
-# ordered strings of faces
-faces   = '2 3 4 5 6 7 8 9 10 j q k a'
-lowaces = 'a 2 3 4 5 6 7 8 9 10 j q k'
-faces   = [x for x in range(15) if x > 1]
-low_aces = [x for x in range (14)]
-
-# faces as lists
-face   = faces.split()
-lowace = lowaces.split()
-
+from card import card
 
 def straightflush(hand):
     is_straight, rank = straight(hand)
@@ -72,16 +56,16 @@ def flush(hand):
     return 'flush', highest_rank
 
 def straight(hand):
-    high_rank = ( 7 if any(card.face == '2' for card in hand) else 1 )
+    high_rank = ( 7 if any(card.rank == '2' for card in hand) else 1 )
     all_ranks = []
     for card in hand:
-        if card == 1 and high_rank == 1:
+        if card.rank == 1 and high_rank == 1:
             all_ranks.append(14)
         else:
             all_ranks.append(card.rank)
     all_ranks.sort()
 
-    if all_ranks[0] - all_ranks[4] != 5:
+    if all_ranks[4] - all_ranks[0] != 4:
         return False, None
     highest_card = all_ranks[0]
     if highest_card == 14:
@@ -156,10 +140,18 @@ def rank(cards):
 def handy(cards):
     hand = []
     for card in cards:
-        assert card.suit in ['diamonds', 'hearts', 'clubs', 'spades'], "Invalid: Don't understand card rank %r" % card.rank
-        assert rank > 0 and rank < 13, "Invalid: Don't understand card suit %d" % card.suit
-        hand.append(Card(f, s))
+        assert card.suit in ['diamonds', 'hearts', 'clubs', 'spades'], "Invalid: Don't understand card suit %d" % card.suit
+        assert card.rank > 0 and card.rank < 13, "Invalid: Don't understand card rank %d" % card.rank
+        hand.append(card)
     assert len(hand) == 5, "Invalid: Must be 5 cards in a hand, not %i" % len(hand)
     assert len(set(hand)) == 5, "Invalid: All cards in the hand must be unique %r" % cards
     return hand
 
+
+def test(hand1):
+    print rank(hand1)
+
+
+hand_a = [card("hearts", 11), card("diamonds", 11), card("hearts", 10), card("hearts", 10), card("hearts", 11)]
+hand_b = [card("hearts", 12)]
+test(hand_a)
