@@ -24,6 +24,13 @@ class Player(object):
         self.dealer = False
         self.points = 0
 
+    def ask_the_user(self, choices):
+        print "what would you like to do?"
+        for i, c in enumerate(choices):
+            print "{0}. {1}".format(i+1, c)
+        
+
+
     def set_dealer(self):
         self.dealer = True
 
