@@ -15,9 +15,7 @@ class Board(object):
     '''
 
 
-    def __init__(self, name, players):
-        self.name = name
-        self.players = players
+    def __init__(self):
         self.pub = []
         self.sec = []
         self.vars = []

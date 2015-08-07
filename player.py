@@ -8,29 +8,26 @@ from poker_ranking import rank
 class Player(object):
     "represents a player in the game"
 
-<<<<<<< HEAD
+
     def __init__(self, id):
         self.id = id
-=======
+
     def __init__(self, name):
         self.id = Player.number
         Player.number += 1
         self.name = name
-<<<<<<< HEAD
+
         self.private = [] # list of piles: only this player can see the cards
         self.non_private = [] # list of piles: everyone except this player can see
         self.public = [] # list of piles: everyone can see
         self.secret = [] # list of piles: no one can see
         self.vars = [] # list of vars
-=======
->>>>>>> 07e76bfb558aaad75965bf75222f498ff5e8fef2
         self.active=True
         self.private = [] # only this player can see the cards
         self.non_private = [] # everyone except this player can see
         self.public = [] # everyone can see
         self.secret = [] # no one can see
         self.vars = [] # list of vars assigned to the player
->>>>>>> 17ccff2965ae7c6ae4434b572c84bf4be08e48e2
         self.dealer = False
         self.points = 0
 
