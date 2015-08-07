@@ -19,11 +19,6 @@ class Board(object):
         self.pub = []
         self.sec = []
         self.vars = []
-        
-    def getPlayer(self, check):
-        for i in self.players:
-            if i.name == check: return i
-        return None
     
     def getVar(self, check):
         for i in self.vars:
@@ -32,8 +27,6 @@ class Board(object):
             j = i.getVar(check)
             if j != None: return j
         return None
-    
-    def getPile(self, check):
-        pass
+
     
     

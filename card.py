@@ -21,3 +21,20 @@ class Card(object):
 
     def __hash__(self):
         return hash(self.rank) ^ ~hash(self.suit)
+
+
+def parse_cards(cards_from_json):
+    cards = []
+    for j_card in cards_from_json:
+        rank = j_card['rank']
+        suit = j_card['suit']
+        if suit == 0:
+            suit = 'hearts'
+        elif suit == 1:
+            suit = 'clubs'
+        elif suit == 2:
+            suit = 'spades'
+        else:
+            suit = 'diamonds'
+        cards.append(Card(suit=suit, rank=rank))
+    return cards
