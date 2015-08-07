@@ -11,8 +11,12 @@
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
 <<<<<<< HEAD
+<<<<<<< HEAD
   <component name="ProjectRootManager" version="2" project-jdk-name="Python 2.7.6 (/usr/bin/python)" project-jdk-type="Python SDK" />
 =======
   <component name="ProjectRootManager" version="2" project-jdk-name="Python 2.6.9 (/System/Library/Frameworks/Python.framework/Versions/2.6/bin/python2.6)" project-jdk-type="Python SDK" />
 >>>>>>> 8c5d2117a53178b72586e216f67aa72f20b2769c
+=======
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 2.6.9 (/System/Library/Frameworks/Python.framework/Versions/2.6/bin/python2.6)" project-jdk-type="Python SDK" />
+>>>>>>> 26d6828eaaa48e74ac5a3ba6fd0c8281ba60414d
 </project>
