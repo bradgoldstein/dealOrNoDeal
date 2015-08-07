@@ -8,7 +8,6 @@ from poker_ranking import rank
 class Player(object):
     "represents a player in the game"
 
-
     def __init__(self, id):
         self.id = id
 

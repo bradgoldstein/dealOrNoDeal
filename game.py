@@ -17,6 +17,7 @@ class Game(object):
         game_input = READ_FROM_FILE - game
         piles = game_input['piles']
         players_json = game_input['players']
+        nodes = game_input['nodes']
         players = dict()
 
         for id in players_json:
@@ -45,10 +46,6 @@ class Game(object):
                     players[owner_id].public.append(cards_in_pile)
                 else: # secret
                     players[owner_id].secret.append(cards_in_pile)
-
-
-        self.play()
-
 
     def play(self):
         fsm_input = READ_FROM_FILE - fsm_input
