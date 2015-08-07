@@ -10,12 +10,6 @@ class Player(object):
 
     def __init__(self, id):
         self.id = id
-
-    def __init__(self, name):
-        self.id = Player.number
-        Player.number += 1
-        self.name = name
-
         self.private = [] # list of piles: only this player can see the cards
         self.non_private = [] # list of piles: everyone except this player can see
         self.public = [] # list of piles: everyone can see
@@ -83,17 +77,3 @@ class Player(object):
         for i in self.vars:
             if i.id == check: return i
         return None
-
-# p = Player("brad")
-c = Card("clubs", 4)
-d = Card("clubs", 5)
-e = Card("clubs", 6)
-f = Card("clubs", 7)
-g = Card("clubs", 8)
-c_s = [c,d,e,f,g]
-# p.private = [c,d, e, f,g]
-# for c in p.private:
-#     print c
-#
-# p.print_p()
-print rank(c_s)

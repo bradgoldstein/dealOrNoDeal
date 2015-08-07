@@ -4,7 +4,7 @@ Created on Aug 6, 2015
 @author: S Vin
 '''
 
-from pile import Pile
+# from pile import Pile
 from player import Player
 from var import Var
 from card import Card

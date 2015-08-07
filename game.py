@@ -5,7 +5,7 @@ import json
 from card import parse_cards
 from player import Player
 from board import Board
-from pile import Pile
+# from pile import Pile
 #read in file, parse,
 
 #play
@@ -15,15 +15,16 @@ class Game(object):
     def __init__(self):
         self.board = Board()
 
-        game_input = READ_FROM_FILE - game
+        game_input = open('json.txt', 'r').read()
+        game_input = json.loads(game_input)
         piles_json = game_input['piles']
         players_json = game_input['players']
         nodes = game_input['nodes']
         players = dict()
         piles = dict()
 
-        for id in players_json:
-            players[id] = Player(id)
+        for player_json in players_json:
+            players[id] = Player(player_json['id'])
 
         for i, pile_json in enumerate(piles_json):
             cards_in_pile = parse_cards(pile_json['cards'])
@@ -62,3 +63,5 @@ class Game(object):
 
     def play_round(self):
         pass
+
+game = Game()
