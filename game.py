@@ -21,6 +21,7 @@ class Game(object):
         nodes = game_input['nodes']
         self.players = dict()
         self.piles = dict()
+        self.vars = dict()
 
         for player_json in players_json:
             self.players[player_json['id']] = Player(player_json['id'])

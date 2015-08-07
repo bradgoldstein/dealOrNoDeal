@@ -43,5 +43,6 @@ def action_handler(game, Action):
         permission_change(game.piles[pileId], toPermission)
 
     elif the_action==6:
-       game.players[userId].ask_the_user(actionList)
+       decision = game.players[userId].ask_the_user(actionList)
+       action_handler(game, actionList[decision])
 

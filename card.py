@@ -26,7 +26,7 @@ class Card(object):
 def parse_cards(cards_from_json):
     cards = []
     for j_card in cards_from_json:
-        rank = j_card['number']
+        rank = j_card['rank']
         suit = j_card['suit']
         if suit == 0:
             suit = 'hearts'

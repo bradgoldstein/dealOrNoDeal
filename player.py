@@ -28,7 +28,17 @@ class Player(object):
         print "what would you like to do?"
         for i, c in enumerate(choices):
             print "{0}. {1}".format(i+1, c)
-        
+        while True:
+            try:
+                mode=int(raw_input('Decision:'))
+            except ValueError:
+                print "Not a number"
+            if mode < 1 or mode > len(choices):
+                print "Not a valid choice"
+            if choices[mode].get("is_invalid", None) == True:
+                print "Not a valid choice"
+            break
+        return mode
 
 
     def set_dealer(self):
