@@ -55,10 +55,11 @@ class Game(object):
         self.play(nodes[0], nodes)
 
     def play(self, node, nodes):
-        if node["isEnd"] is True:
-            print "End of game :) Thanks for playing!"
+        next_node =  node.get('action', None)
+        if next_node == None:
+            print "Game over!! Thank's for playing :)"
         else:
-            action_handler(self, node['action'])
+            action_handler(self, next_node)
             if_statements = node['conditions']
             for state in if_statements:
                 if eval(state['boolFunc']):

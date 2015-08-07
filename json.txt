@@ -17,9 +17,7 @@
 		"conditions": [
 			{"boolFunc": "True",
 			"nodeId": 1}],
-		"isEnd": false,
 		"endConditions": []},
 		{"id": 1,
 		"conditions": [],
-		"isEnd": true,
 		"endConditions": ["True", "False"]}]}

@@ -1,8 +1,8 @@
 from shuffle import shuffle
 
 def action_handler(game, Action):
+    the_action = Action.get('actionType', None)
 
-    the_action = Action['actionType']
 
     pileId=game.piles.get(Action['pileId'], None)
     fromPileId=Action.get('fromPileId', None)
