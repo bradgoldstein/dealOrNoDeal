@@ -19,7 +19,7 @@ class Player(object):
 
         self.private = [] # list of piles: only this player can see the cards
         self.non_private = [] # list of piles: everyone except this player can see
-        self.pu
+        self.public = [] # list of piles: everyone can see
         self.secret = [] # list of piles: no one can see
         self.vars = [] # list of vars
         self.active=True
