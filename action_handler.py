@@ -29,6 +29,8 @@ def action_handler(game, Action):
     elif the_action==2:
         if userId != -1:
             value = game.players[userId].map_change(key)
+        if type(value) is not int:
+            value = int(eval(value))
         game.vars[key] = value
 
     elif the_action==3:

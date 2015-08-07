@@ -64,7 +64,7 @@ class Pile(object):
                 pass
         elif fromMethod == "random":
             if toMethod == "stack":      #Places numberCards random draws from self and puts them atop toPile
-                for _ in range(numberCards): toPile.insert(0, self.pop(randint(0, len(self))))
+                for _ in range(numberCards): toPile.cards.insert(0, self.cards.pop(randint(0, len(self.cards)-1)))
             elif toMethod == "multiple": #Places numberCards random draws into selected positions in toPile
                 temp = toList.sort()
                 for _ in range(len(toList)): toPile.insert(temp.pop(), self.pop(randint(0, len(self))))
@@ -87,7 +87,6 @@ class Pile(object):
         fromList.sort()
         temp = fromList
         for i in range(len(fromList)):
-            print temp
             toPile.cards.insert(i, self.cards.pop(temp.pop())) #Orders the temp list and moves the elements in reverse order (largest to smallest) to prevent indexing errors
 
 #    def transfer_stack(self, pile):                                         #transfer 1: moves first item of self to the top of pile

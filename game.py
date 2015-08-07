@@ -14,7 +14,7 @@ class Game(object):
     def __init__(self):
         self.board = Board()
 
-        game_input = open('game_2.txt', 'r').read()
+        game_input = open('game_3.txt', 'r').read()
         game_input = json.loads(game_input)
         piles_json = game_input['piles']
         players_json = game_input['players']
@@ -59,31 +59,12 @@ class Game(object):
         self.print_state()
         next_node = node.get('action', None)
         if next_node == None:
-            # print
-            # p1_s = self.players[0].secret[0]
-            # print "player 1"
-            # for c in p1_s.cards:
-            #     print c
-            # print "\nplayer 2"
-            # p2_s = self.players[1].secret[0]
-            # for c in p2_s.cards:
-            #     print c
             if_statements = node['endConditions']
             for i, state in enumerate(if_statements):
                 if eval(state):
                     print "player {0} wins!".format(i+1)
             print "Game over!! Thank's for playing :)"
         else:
-            # print
-            # p1_s = self.players[0].secret[0]
-            # print "player 1"
-            # for c in p1_s.cards:
-            #     print c
-            # if len(self.players[1].private) > 0:
-            #     print "\nplayer 2"
-            #     p2_s = self.players[1].private[0]
-            #     for c in p2_s.cards:
-            #         print c
             action_handler(self, next_node)
             if_statements = node['conditions']
             for state in if_statements:
