@@ -1,0 +1,26 @@
+{“game”: {
+	“piles”: [
+		{ “cards”: [
+			{ “number”: 1, “suit”: 0},
+			{ “number”: 1, “suit”: 1},
+			{ “number”: 1, “suit”: 2},
+			{ “number”: 1, “suit”: 3}],
+		“owner_id”: -1,
+		“setting”: 3}],
+	“players”: [
+		{ “id”: 0},
+		{ “id”: 1}],
+	“nodes”: [
+		{“action”: {
+			“pileId”: 0,
+			“actionType”: 0},
+		“id”: 0,
+		“conditions”: [
+			{“boolFunc”: “true”,
+			“nodeId”: 1}],
+		“isEnd”: false,
+		“endConditions”: []},
+		{“id”: 1,
+		“conditions”: [],
+		“isEnd”: true,
+		“endConditions”: [“true”, “false”]}]}
