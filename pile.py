@@ -67,6 +67,9 @@ class Pile(object):
                 for _ in range(len(toList)): toPile.insert(temp.pop(), self.pop(randint(0, len(self))))
             elif toMethod == "random":   #randomly transfers numberCards from self to toPile
                 for _ in range(len(toList)): toPile.insert(randint(0, len(toPile)), self.pop(randint(0, len(self))))
+        elif fromMethod == "user":
+            var = raw_input("Please select the number card: ")
+            self.pileTransfer_helper2(toPile, [var])
 
     # def pileTransfer(self, toPile): #A Pile refers to cards from 'top' to 'bottom'
     #     toPile.insert(0, self.popleft())
