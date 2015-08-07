@@ -14,7 +14,7 @@ class Game(object):
     def __init__(self):
         self.board = Board()
 
-        game_input = open('json.txt', 'r').read()
+        game_input = open('game.txt', 'r').read()
         game_input = json.loads(game_input)
         piles_json = game_input['piles']
         players_json = game_input['players']
@@ -23,7 +23,7 @@ class Game(object):
         self.piles = dict()
 
         for player_json in players_json:
-            self.players[id] = Player(player_json['id'])
+            self.players[player_json['id']] = Player(player_json['id'])
 
         for i, pile_json in enumerate(piles_json):
             cards_in_pile = parse_cards(pile_json['cards'])
@@ -44,19 +44,32 @@ class Game(object):
             else:
                 assert setting in [0,1,2,3]
                 if setting == 0:
-                    players[owner_id].private.append(pile)
+                    self.players[owner_id].private.append(pile)
                 elif setting == 1:
-                    players[owner_id].non_private.append(pile)
+                    self.players[owner_id].non_private.append(pile)
                 elif setting == 2:
-                    players[owner_id].public.append(pile)
+                    self.players[owner_id].public.append(pile)
                 else: # secret
-                    players[owner_id].secret.append(pile)
+                    self.players[owner_id].secret.append(pile)
 
         self.play(nodes[0], nodes)
 
     def play(self, node, nodes):
-        next_node =  node.get('action', None)
+        next_node = node.get('action', None)
         if next_node == None:
+            print
+            p1_s = self.players[0].secret[0]
+            print "player 1"
+            for c in p1_s.cards:
+                print c
+            print "\nplayer 2"
+            p2_s = self.players[1].secret[0]
+            for c in p2_s.cards:
+                print c
+            if_statements = node['endConditions']
+            for i, state in enumerate(if_statements):
+                if eval(state):
+                    print "player {0} wins!".format(i+1)
             print "Game over!! Thank's for playing :)"
         else:
             action_handler(self, next_node)

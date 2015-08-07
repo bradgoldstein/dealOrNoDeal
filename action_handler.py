@@ -1,10 +1,11 @@
 from shuffle import shuffle
+from pile import Pile
 
 def action_handler(game, Action):
     the_action = Action.get('actionType', None)
 
 
-    pileId=game.piles.get(Action['pileId'], None)
+    pileId=Action.get('pileId', None)
     fromPileId=Action.get('fromPileId', None)
     toPileId=Action.get('toPileId', None)
     numberCards=Action.get('numberCards', None)
@@ -12,7 +13,7 @@ def action_handler(game, Action):
     toMethod=Action.get('toMethod', None)
     key=Action.get('key', None)
     value=Action.get('value', None)
-    userInitiated=Action.get('userInitiated', None)
+    userId=Action.get('userId', None)
     playerId=Action.get('playerId', None)
     isExit=Action.get('isExit', None)
     isRemove=Action.get('isRemove', None)
@@ -20,17 +21,14 @@ def action_handler(game, Action):
     actionList=Action.get('actionList', None)
 
     if the_action == 0:
-        # move shuffle into pile
-        shuffle(pileId)
+        shuffle(game.piles[pileId])
 
     elif the_action==1:
-        # in piles and board
-
-        pile_transfer(fromPileId, toPileId, numberCards, fromMethod, toMethod)
+        game.piles[fromPileId].pileTransfer(game.piles[toPileId], fromMethod, toMethod, numberCards, None, None)
 
     elif the_action==2:
         # ??
-        map_change(key, value, userInitiated, playerId)
+        map_change(key, value, userId, playerId)
 
     elif the_action==3:
         # board -> player
@@ -38,13 +36,13 @@ def action_handler(game, Action):
 
     elif the_action==4:
         # board -> pile
-        pile_creation_removal(pileId, isRemove)
+        pile_creation_removal(game.piles[pileId], isRemove)
 
     elif the_action==5:
         # board -> pile
-        permission_change(pileId, toPermission)
+        permission_change(game.piles[pileId], toPermission)
 
     elif the_action==6:
         # exectute -- ???
-        user_choice(actionList)
+        user_choice(userId, actionList)
 
