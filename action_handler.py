@@ -4,20 +4,20 @@ def action_handler(game, Action):
 
     the_action = Action['actionType']
 
-    pileId=game.piles[ Action['pileId'] ]
-    fromPileId=Action['fromPileId']
-    toPileId=Action['toPileId']
-    numberCards=Action['numberCards']
-    fromMethod=Action['fromMethod']
-    toMethod=Action['toMethod']
-    key=Action['key']
-    value=Action['value']
-    userInitiated=Action['userInitiated']
-    playerId=Action['playerId']
-    isExit=Action['isExit']
-    isRemove=Action['isRemove']
-    toPermission=Action['toPermission']
-    actionList=Action['actionList']
+    pileId=game.piles.get(Action['pileId'], None)
+    fromPileId=Action.get('fromPileId', None)
+    toPileId=Action.get('toPileId', None)
+    numberCards=Action.get('numberCards', None)
+    fromMethod=Action.get('fromMethod', None)
+    toMethod=Action.get('toMethod', None)
+    key=Action.get('key', None)
+    value=Action.get('value', None)
+    userInitiated=Action.get('userInitiated', None)
+    playerId=Action.get('playerId', None)
+    isExit=Action.get('isExit', None)
+    isRemove=Action.get('isRemove', None)
+    toPermission=Action.get('toPermission', None)
+    actionList=Action.get('actionList', None)
 
     if the_action == 0:
         # move shuffle into pile
