@@ -15,11 +15,11 @@
 			"actionType": 0},
 		"id": 0,
 		"conditions": [
-			{"boolFunc": "true",
+			{"boolFunc": "True",
 			"nodeId": 1}],
 		"isEnd": false,
 		"endConditions": []},
 		{"id": 1,
 		"conditions": [],
 		"isEnd": true,
-		"endConditions": ["true", "false"]}]}
+		"endConditions": ["True", "False"]}]}
