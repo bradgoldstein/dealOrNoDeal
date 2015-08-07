@@ -4,7 +4,7 @@ Created on Aug 6, 2015
 @author: S Vin
 '''
 
-from random import random
+from random import randint
 
 
 class Pile(object):
@@ -24,6 +24,8 @@ class Pile(object):
             fromMethod = "stack"
         elif fromMethod == 2:
             fromMethod = "random"
+        elif fromMethod == 3:
+            fromMethod = "user"
 
         if toMethod == 0:
             toMethod = "stack"
@@ -31,6 +33,7 @@ class Pile(object):
             toMethod = "stack"
         elif toMethod == 2:
             toMethod = "random"
+
 
 
         if fromMethod == "stack":
@@ -69,7 +72,7 @@ class Pile(object):
                 for _ in range(len(toList)): toPile.insert(randint(0, len(toPile)), self.pop(randint(0, len(self))))
         elif fromMethod == "user":
             for i in range(numberCards):
-                var = raw_input("Please select the number card: ")
+                var = int(raw_input("Please select the number card: "))
                 self.pileTransfer_helper2(toPile, [var])
 
     # def pileTransfer(self, toPile): #A Pile refers to cards from 'top' to 'bottom'
@@ -81,8 +84,11 @@ class Pile(object):
     def pileTransfer_helper2(self, toPile, fromList):
         # temp = fromList
         # for i in range len(fromList): toPile.insert(i, self.pop((max(temp)))); temp.remove(temp.index(max(temp)))
-        temp = fromList.sort()
-        for i in range(len(fromList)): toPile.insert(i, self.pop(temp.pop())) #Orders the temp list and moves the elements in reverse order (largest to smallest) to prevent indexing errors
+        fromList.sort()
+        temp = fromList
+        for i in range(len(fromList)):
+            print temp
+            toPile.cards.insert(i, self.cards.pop(temp.pop())) #Orders the temp list and moves the elements in reverse order (largest to smallest) to prevent indexing errors
 
 #    def transfer_stack(self, pile):                                         #transfer 1: moves first item of self to the top of pile
 #        pile.append(self.pop([-1]))
