@@ -14,7 +14,7 @@ class Game(object):
     def __init__(self):
         self.board = Board()
 
-        game_input = open('game.txt', 'r').read()
+        game_input = open('game_2.txt', 'r').read()
         game_input = json.loads(game_input)
         piles_json = game_input['piles']
         players_json = game_input['players']

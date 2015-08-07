@@ -40,6 +40,12 @@ class Player(object):
             break
         return mode
 
+    def map_change(self, key):
+        print "Pick a value for {0}".format(key)
+        mode=raw_input('Decision:')
+        return mode
+
+
 
     def set_dealer(self):
         self.dealer = True

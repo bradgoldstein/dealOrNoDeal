@@ -27,8 +27,9 @@ def action_handler(game, Action):
         game.piles[fromPileId].pileTransfer(game.piles[toPileId], fromMethod, toMethod, numberCards, None, None)
 
     elif the_action==2:
-        # ??
-        map_change(key, value, userId, playerId)
+        if userId != -1:
+            value = game.players[userId].map_change(key)
+        game.vars[key] = value
 
     elif the_action==3:
         # board -> player
